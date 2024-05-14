@@ -28,7 +28,7 @@ resource "constellix_a_record_pool" "test_pool" {
   count = length(local.pools)
 
   name                   = local.pools[count.index].name
-  num_return             = "10"
+  num_return             = "1"
   min_available_failover = 1
 
   dynamic "values" {
