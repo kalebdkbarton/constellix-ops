@@ -20,13 +20,13 @@ locals {
         {
           value        = "8.1.1.1"
           weight       = 20
-          policy       = "followsonar"
+          policy       = "alwayson"
           disable_flag = false
         },
         {
           value        = "9.1.1.1"
           weight       = 20
-          policy       = "followsonar"
+          policy       = "alwayson"
           disable_flag = false
         }
       ]
@@ -37,13 +37,13 @@ locals {
         {
           value        = "10.1.1.1"
           weight       = 20
-          policy       = "roundrobin"
+          policy       = "alwayson"
           disable_flag = false
         },
         {
           value        = "11.1.1.1"
           weight       = 30
-          policy       = "roundrobin"
+          policy       = "alwayson"
           disable_flag = false
         }
       ]
