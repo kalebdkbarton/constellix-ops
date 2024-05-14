@@ -48,7 +48,6 @@ resource "constellix_a_record_pool" "test_pool" {
 
 resource "constellix_a_record" "test_a_pool" {
   count = length(local.pools)
-  for_each      = local.default_record.a
   domain_id     = constellix_domain.kaleb.id
   source_type   = "domains"
   record_option = "roundRobin"
