@@ -23,7 +23,8 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [constellix_a_record.test_failover](https://registry.terraform.io/providers/Constellix/constellix/latest/docs/resources/a_record) | resource |
+| [constellix_a_record.test_a](https://registry.terraform.io/providers/Constellix/constellix/latest/docs/resources/a_record) | resource |
+| [constellix_a_record_pool.test_a_pool](https://registry.terraform.io/providers/Constellix/constellix/latest/docs/resources/a_record_pool) | resource |
 | [constellix_domain.kaleb](https://registry.terraform.io/providers/Constellix/constellix/latest/docs/resources/domain) | resource |
 
 ## Inputs

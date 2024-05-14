@@ -25,21 +25,21 @@ resource "constellix_a_record" "test_a" {
 }
 
 resource "constellix_a_record_pool" "test_a_pool" {
-  name                   = "firstrecord"
+  count                  = length(local.pools)
+  name                   = local.pools[count.index].name
   num_return             = "10"
   min_available_failover = 1
-  values {
-    value        = "8.1.1.1"
-    weight       = 20
-    policy       = "followsonar"
-    disable_flag = false
+
+  dynamic "values" {
+    for_each = local.pools[count.index].values
+    content {
+      value        = values.value
+      weight       = values.weight
+      policy       = values.policy
+      disable_flag = values.disable_flag
+    }
   }
-  values {
-    value        = "9.1.1.1"
-    weight       = 20
-    policy       = "followsonar"
-    disable_flag = false
-  }
+
   failed_flag  = false
   disable_flag = false
   note         = "First record"

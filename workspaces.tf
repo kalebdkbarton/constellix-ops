@@ -12,4 +12,42 @@ locals {
       tftest = "3.2.5.1"
     }
   }
+
+  pools = [
+    {
+      name = "test_pool1"
+      values = [
+        {
+          value        = "8.1.1.1"
+          weight       = 20
+          policy       = "followsonar"
+          disable_flag = false
+        },
+        {
+          value        = "9.1.1.1"
+          weight       = 20
+          policy       = "followsonar"
+          disable_flag = false
+        }
+      ]
+    },
+    {
+      name = "test_pool2"
+      values = [
+        {
+          value        = "10.1.1.1"
+          weight       = 20
+          policy       = "roundrobin"
+          disable_flag = false
+        },
+        {
+          value        = "11.1.1.1"
+          weight       = 30
+          policy       = "roundrobin"
+          disable_flag = false
+        }
+      ]
+    }
+  ]
+
 }
