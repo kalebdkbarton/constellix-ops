@@ -16,10 +16,10 @@ resource "constellix_a_record" "test_failover" {
   source_type   = "domains"
   record_option = "roundRobin"
   ttl           = 100
-  name          = "${each.key}"
+  name          = each.key
   roundrobin {
-    value        = "${each.value}"
+    value        = each.value
     disable_flag = "false"
   }
-  note = "${local.name}"
+  note = local.name
 }
