@@ -39,4 +39,7 @@ resource "constellix_http_check" "test_http_check" {
   port          = 443
   protocol_type = "HTTPS"
   check_sites   = [1, 2]
+  interval = "ONEMINUTE"
+  interval_policy = "ONCEPERSITE"
+  verification_policy = "SIMPLE"
 }
