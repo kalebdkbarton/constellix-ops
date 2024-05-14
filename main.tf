@@ -24,8 +24,8 @@ resource "constellix_a_record" "test_a" {
   note = local.name
 }
 
-resource "constellix_a_record_pool" "test_a_pool" {
-  count                  = length(local.pools)
+resource "constellix_a_record_pool" "test_pool" {
+  count = length(local.pools)
 
   name                   = local.pools[count.index].name
   num_return             = "10"
@@ -43,5 +43,17 @@ resource "constellix_a_record_pool" "test_a_pool" {
 
   failed_flag  = false
   disable_flag = false
-  note         = "First record"
+  note         = local.name
+}
+
+resource "constellix_a_record" "test_a_pool" {
+  count = length(local.pools)
+  for_each      = local.default_record.a
+  domain_id     = constellix_domain.kaleb.id
+  source_type   = "domains"
+  record_option = "roundRobin"
+  ttl           = 100
+  name          = local.pools[count.index].name
+  pools         = resource.constellix_a_record_pool[count].id
+  note          = local.name
 }
