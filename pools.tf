@@ -12,7 +12,7 @@ resource "constellix_a_record_pool" "test_pool" {
       weight       = values.value.weight
       policy       = values.value.policy
       disable_flag = values.value.disable_flag
-      check_id     = resource.constellix_http_check[count.index].id
+      check_id     = resource.constellix_http_check.test_http_check.id
     }
   }
 
@@ -33,8 +33,7 @@ resource "constellix_a_record" "test_a_pool" {
 }
 
 resource "constellix_http_check" "test_http_check" {
-  count         = length(local.pools)
-  name          = "${local.pools[count.index].name}-check"
+  name          = "malavear-check"
   host          = "resume.malavear.com"
   ip_version    = "IPV4"
   port          = 443
