@@ -12,7 +12,7 @@ resource "constellix_domain" "kaleb" {
 
 resource "constellix_a_record" "test_failover" {
   for_each      = local.default_record.a
-  domain_id     = constellix_domain.malcocustom.id
+  domain_id     = constellix_domain.kaleb.id
   source_type   = "domains"
   record_option = "roundRobin"
   ttl           = 100
