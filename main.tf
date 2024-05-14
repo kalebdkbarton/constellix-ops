@@ -33,10 +33,10 @@ resource "constellix_a_record_pool" "test_a_pool" {
   dynamic "values" {
     for_each = local.pools[count.index].values
     content {
-      value        = each.value.value
-      weight       = each.value.weight
-      policy       = each.value.policy
-      disable_flag = each.value.disable_flag
+      value        = values[count].value
+      weight       = values[count].weight
+      policy       = values[count].policy
+      disable_flag = values[count].disable_flag
     }
   }
 
