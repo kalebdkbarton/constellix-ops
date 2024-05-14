@@ -53,6 +53,6 @@ resource "constellix_a_record" "test_a_pool" {
   record_option = "roundRobin"
   ttl           = 100
   name          = local.pools[count.index].name
-  pools         = resource.constellix_a_record_pool[count].id
+  pools         = resource.constellix_a_record_pool[count.index].id
   note          = local.name
 }
