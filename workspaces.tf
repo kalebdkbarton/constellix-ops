@@ -16,7 +16,7 @@ locals {
   pools = [
     {
       name = "test_pool1"
-      values = [
+      pool_values = [
         {
           value        = "8.1.1.1"
           weight       = 20
@@ -33,7 +33,7 @@ locals {
     },
     {
       name = "test_pool2"
-      values = [
+      pool_values = [
         {
           value        = "10.1.1.1"
           weight       = 20
