@@ -32,12 +32,12 @@ resource "constellix_a_record_pool" "test_a_pool" {
   min_available_failover = 1
 
   dynamic "values" {
-    for_each = local.pools[count.index].pool_values
+    for_each = local.pools[count.index].values
     content {
-      value        = pool_values.value.value
-      weight       = pool_values.value.weight
-      policy       = pool_values.value.policy
-      disable_flag = pool_values.value.disable_flag
+      value        = values.value.value
+      weight       = values.value.weight
+      policy       = values.value.policy
+      disable_flag = values.value.disable_flag
     }
   }
 
