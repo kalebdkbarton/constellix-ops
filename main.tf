@@ -17,10 +17,6 @@ resource "constellix_a_record" "test_failover" {
   record_option = "roundRobin"
   ttl           = 100
   name          = "${each.key}"
-  geo_location = {
-    geo_ip_user_region = 1
-    drop               = "false"
-  }
   roundrobin {
     value        = "${each.value}"
     disable_flag = "false"
