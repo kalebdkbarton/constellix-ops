@@ -1,5 +1,5 @@
 resource "constellix_a_record" "test_a" {
-  for_each      = local.default_record.a
+  for_each      = local.records.a
   domain_id     = constellix_domain.kaleb.id
   source_type   = "domains"
   record_option = "roundRobin"
@@ -13,7 +13,7 @@ resource "constellix_a_record" "test_a" {
 }
 
 resource "constellix_aaaa_record" "firstrecord" {
-  for_each      = local.default_record.aaaa
+  for_each      = local.records.aaaa
   domain_id     = constellix_domain.kaleb.id
   source_type   = "domains"
   record_option = "roundRobin"
@@ -29,7 +29,7 @@ resource "constellix_aaaa_record" "firstrecord" {
 }
 
 resource "constellix_cname_record" "firstrecord" {
-  for_each      = local.default_record.cname
+  for_each      = local.records.cname
   domain_id     = constellix_domain.kaleb.id
   source_type   = "domains"
   record_option = "roundRobin"
