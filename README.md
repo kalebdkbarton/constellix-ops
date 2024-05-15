@@ -26,7 +26,10 @@ No modules.
 | [constellix_a_record.test_a](https://registry.terraform.io/providers/Constellix/constellix/latest/docs/resources/a_record) | resource |
 | [constellix_a_record.test_a_pool](https://registry.terraform.io/providers/Constellix/constellix/latest/docs/resources/a_record) | resource |
 | [constellix_a_record_pool.test_pool](https://registry.terraform.io/providers/Constellix/constellix/latest/docs/resources/a_record_pool) | resource |
+| [constellix_aaaa_record.firstrecord](https://registry.terraform.io/providers/Constellix/constellix/latest/docs/resources/aaaa_record) | resource |
+| [constellix_cname_record.firstrecord](https://registry.terraform.io/providers/Constellix/constellix/latest/docs/resources/cname_record) | resource |
 | [constellix_domain.kaleb](https://registry.terraform.io/providers/Constellix/constellix/latest/docs/resources/domain) | resource |
+| [constellix_http_check.test_http_check_pools](https://registry.terraform.io/providers/Constellix/constellix/latest/docs/resources/http_check) | resource |
 
 ## Inputs
 

@@ -19,8 +19,8 @@ resource "constellix_aaaa_record" "firstrecord" {
   record_option = "roundRobin"
   ttl           = 100
   name          = each.key
-  type        = "AAAA"
-  gtd_region  = 1
+  type          = "AAAA"
+  gtd_region    = 1
   roundrobin {
     value        = each.value
     disable_flag = "false"
@@ -36,6 +36,6 @@ resource "constellix_cname_record" "firstrecord" {
   ttl           = 100
   name          = each.key
   host          = each.value
-  type        = "CNAME"
-  note = local.name
+  type          = "CNAME"
+  note          = local.name
 }
