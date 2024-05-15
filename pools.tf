@@ -1,13 +1,15 @@
 locals {
-  flattened_pool_ips = {
-    for pool_name, pool in local.pools : 
-    pool_name => distinct([for value in pool.values : value.value])
-  }
-  fully_flattened_pool_ips = merge([
-    for pool_name, ip_addresses in local.flattened_pool_ips : {
-      for ip_address in ip_addresses : 
-      "${pool_name}_${ip_address}" => ip_address
-    }
+  flattened_values = flatten([
+    for pool_name, pool in local.pools : [
+      for value in pool.values : {
+        pool_name       = pool_name
+        value           = value.value
+        fqdn            = value.fqdn
+        weight          = value.weight
+        policy          = value.policy
+        disable_flag    = value.disable_flag
+      }
+    ]
   ])
 
  pools = {
@@ -69,11 +71,11 @@ locals {
 }
 
 resource "constellix_http_check" "test_http_check_pools" {
-  for_each = local.fully_flattened_pool_ips
+  for_each = { for idx, value in local.flattened_values : idx => value }
 
-  name                = each.key
-  host                = each.value
-  fqdn                = "resume.malavear.com"
+  name                = each.value.pool_name
+  host                = each.value.value
+  fqdn                = each.value.fqdn
   ip_version          = "IPV4"
   port                = 443
   protocol_type       = "HTTPS"
