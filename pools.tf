@@ -88,19 +88,10 @@ resource "constellix_a_record" "test_a_pool" {
   note          = local.name
 }
 
-resource "constellix_http_check" "test_http_check" {
-  for_each = {
-    for pool in local.pools : "${pool.name}" => toset(flatten([for value in pool.values : value.value]))
-  }
-
-  name                = "malavear-check-${each.key}"
-  host                = join(",", each.value)
-  fqdn                = "resume.malavear.com"
-  ip_version          = "IPV4"
-  port                = 443
-  protocol_type       = "HTTPS"
-  check_sites         = [1, 2]
-  interval            = "ONEMINUTE"
-  interval_policy     = "ONCEPERSITE"
-  verification_policy = "SIMPLE"
+module "sonar"{
+  for_each = local.pools.value
+  source = "./sonar"
+  check_type = "http"
+  pool_name = each.key
+  pool_values = each.value
 }
