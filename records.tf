@@ -4,7 +4,7 @@ resource "constellix_a_record" "test_a" {
   source_type   = "domains"
   record_option = "roundRobin"
   ttl           = 100
-  name          = each.key
+  name          = each.key == "root" ? "" : each.key
   roundrobin {
     value        = each.value
     disable_flag = "false"
