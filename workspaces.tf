@@ -2,9 +2,13 @@ locals {
   #----------------------------------------------------------------------------
   # Workspace Defaults
   #----------------------------------------------------------------------------
-  name = "kaleb_test created with terraform"
+  name    = "kaleb_test created with terraform"
   domains = ["kalebbarton-test.com"]
-  # tag defaults
+
+  #----------------------------------------------------------------------------
+  # Records
+  #----------------------------------------------------------------------------
+
   records = {
     a = {
       www    = "1.2.3.4",
@@ -18,6 +22,66 @@ locals {
     }
     cname = {
       resume = "resume.malavear.com"
+    }
+  }
+
+  #----------------------------------------------------------------------------
+  # Pools
+  #----------------------------------------------------------------------------
+  pools = {
+    test_pool1 = {
+      values = [
+        {
+          value        = "108.157.142.75"
+          weight       = 20
+          policy       = "followsonar"
+          disable_flag = false
+          fqdn         = "resume.malavear.com"
+        },
+        {
+          value        = "108.157.142.25"
+          weight       = 20
+          policy       = "followsonar"
+          disable_flag = false
+          fqdn         = "resume.malavear.com"
+        }
+      ]
+    },
+    test_pool2 = {
+      values = [
+        {
+          value        = "108.157.142.97"
+          weight       = 20
+          policy       = "followsonar"
+          disable_flag = false
+          fqdn         = "resume.malavear.com"
+        },
+        {
+          value        = "108.157.142.56"
+          weight       = 30
+          policy       = "followsonar"
+          disable_flag = false
+          fqdn         = "resume.malavear.com"
+        }
+      ]
+    },
+    test_pool3 = {
+      values = [
+        {
+          value        = "108.157.142.25"
+          weight       = 20
+          policy       = "followsonar"
+          disable_flag = false
+          fqdn         = "resume.malavear.com"
+        },
+        {
+          value        = "108.157.142.56"
+          weight       = 30
+          policy       = "followsonar"
+          disable_flag = false
+          fqdn         = "resume.malavear.com"
+        }
+      ]
     }
   }
 }

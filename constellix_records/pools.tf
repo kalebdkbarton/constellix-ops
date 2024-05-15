@@ -1,6 +1,6 @@
 locals {
   flattened_values = flatten([
-    for pool_name, pool in local.pools : [
+    for pool_name, pool in var.pools : [
       for value in pool.values : {
         pool_name    = pool_name
         value        = value.value
@@ -11,63 +11,6 @@ locals {
       }
     ]
   ])
-
-  pools = {
-    test_pool1 = {
-      values = [
-        {
-          value        = "108.157.142.75"
-          weight       = 20
-          policy       = "followsonar"
-          disable_flag = false
-          fqdn         = "resume.malavear.com"
-        },
-        {
-          value        = "108.157.142.25"
-          weight       = 20
-          policy       = "followsonar"
-          disable_flag = false
-          fqdn         = "resume.malavear.com"
-        }
-      ]
-    },
-    test_pool2 = {
-      values = [
-        {
-          value        = "108.157.142.97"
-          weight       = 20
-          policy       = "followsonar"
-          disable_flag = false
-          fqdn         = "resume.malavear.com"
-        },
-        {
-          value        = "108.157.142.56"
-          weight       = 30
-          policy       = "followsonar"
-          disable_flag = false
-          fqdn         = "resume.malavear.com"
-        }
-      ]
-    },
-    test_pool3 = {
-      values = [
-        {
-          value        = "108.157.142.25"
-          weight       = 20
-          policy       = "followsonar"
-          disable_flag = false
-          fqdn         = "resume.malavear.com"
-        },
-        {
-          value        = "108.157.142.56"
-          weight       = 30
-          policy       = "followsonar"
-          disable_flag = false
-          fqdn         = "resume.malavear.com"
-        }
-      ]
-    }
-  }
 }
 
 resource "constellix_http_check" "test_http_check_pools" {
@@ -87,7 +30,7 @@ resource "constellix_http_check" "test_http_check_pools" {
 
 
 resource "constellix_a_record_pool" "test_pool" {
-  for_each               = local.pools
+  for_each               = var.pools
   name                   = each.key
   num_return             = "1"
   min_available_failover = 1

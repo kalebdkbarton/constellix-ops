@@ -11,7 +11,11 @@ variable "secretkey" {
 }
 
 variable "records" {
-  type        = map
+  type = map(any)
+}
+
+variable "pools" {
+  type = map(any)
 }
 
 variable "name" {
