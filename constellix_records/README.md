@@ -34,12 +34,10 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_apikey"></a> [apikey](#input\_apikey) | constellix api key | `string` | n/a | yes |
-| <a name="input_domain_id"></a> [domain\_id](#input\_domain\_id) | constellix api key | `string` | n/a | yes |
-| <a name="input_name"></a> [name](#input\_name) | constellix api key | `string` | n/a | yes |
-| <a name="input_pools"></a> [pools](#input\_pools) | n/a | `map(any)` | n/a | yes |
-| <a name="input_records"></a> [records](#input\_records) | n/a | `map(any)` | n/a | yes |
-| <a name="input_secretkey"></a> [secretkey](#input\_secretkey) | constellix api key | `string` | n/a | yes |
+| <a name="input_domain_id"></a> [domain\_id](#input\_domain\_id) | ID of the Constellix Domain to have resources created in | `string` | n/a | yes |
+| <a name="input_note"></a> [note](#input\_note) | Note to add to records | `string` | n/a | yes |
+| <a name="input_pools"></a> [pools](#input\_pools) | Map of pools to have created in Constellix | `map(any)` | n/a | yes |
+| <a name="input_records"></a> [records](#input\_records) | Map of records to have created in Constellix | `map(any)` | n/a | yes |
 
 ## Outputs
 

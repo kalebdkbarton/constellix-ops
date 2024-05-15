@@ -26,9 +26,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_apikey"></a> [apikey](#input\_apikey) | constellix api key | `string` | n/a | yes |
-| <a name="input_domain"></a> [domain](#input\_domain) | constellix api key | `string` | n/a | yes |
-| <a name="input_secretkey"></a> [secretkey](#input\_secretkey) | constellix api key | `string` | n/a | yes |
+| <a name="input_domain"></a> [domain](#input\_domain) | domain to create in constellix | `string` | n/a | yes |
 
 ## Outputs
 

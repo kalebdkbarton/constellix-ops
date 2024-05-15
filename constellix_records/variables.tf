@@ -1,11 +1,11 @@
 variable "records" {
   description = "Map of records to have created in Constellix"
-  type = map(any)
+  type        = map(any)
 }
 
 variable "pools" {
   description = "Map of pools to have created in Constellix"
-  type = map(any)
+  type        = map(any)
 }
 
 variable "note" {
