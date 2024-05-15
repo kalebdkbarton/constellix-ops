@@ -48,7 +48,7 @@ resource "constellix_a_record_pool" "test_pool" {
 
   failed_flag  = false
   disable_flag = false
-  note         = var.name
+  note         = var.note
 }
 
 # resource "constellix_a_record" "test_a_pool" {

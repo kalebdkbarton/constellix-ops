@@ -9,7 +9,7 @@ resource "constellix_a_record" "test_a" {
     value        = each.value
     disable_flag = "false"
   }
-  note = var.name
+  note = var.note
 }
 
 resource "constellix_aaaa_record" "firstrecord" {
@@ -25,7 +25,7 @@ resource "constellix_aaaa_record" "firstrecord" {
     value        = each.value
     disable_flag = "false"
   }
-  note = var.name
+  note = var.note
 }
 
 resource "constellix_cname_record" "firstrecord" {
@@ -37,5 +37,5 @@ resource "constellix_cname_record" "firstrecord" {
   name          = each.key
   host          = each.value
   type          = "CNAME"
-  note          = var.name
+  note          = var.note
 }

@@ -2,7 +2,7 @@ locals {
   #----------------------------------------------------------------------------
   # Workspace Defaults
   #----------------------------------------------------------------------------
-  name    = "kaleb_test created with terraform"
+  note    = "kaleb_test created with terraform"
   domains = ["kalebbarton-test.com"]
 
   #----------------------------------------------------------------------------

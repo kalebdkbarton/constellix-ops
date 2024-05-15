@@ -5,7 +5,7 @@ variable "apikey" {
 }
 
 variable "secretkey" {
-  description = "constellix api key"
+  description = "constellix secret key"
   type        = string
   sensitive   = true
 }

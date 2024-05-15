@@ -1,29 +1,19 @@
-variable "apikey" {
-  description = "constellix api key"
-  type        = string
-  sensitive   = true
-}
-
-variable "secretkey" {
-  description = "constellix api key"
-  type        = string
-  sensitive   = true
-}
-
 variable "records" {
+  description = "Map of records to have created in Constellix"
   type = map(any)
 }
 
 variable "pools" {
+  description = "Map of pools to have created in Constellix"
   type = map(any)
 }
 
-variable "name" {
-  description = "constellix api key"
+variable "note" {
+  description = "Note to add to records"
   type        = string
 }
 
 variable "domain_id" {
-  description = "constellix api key"
+  description = "ID of the Constellix Domain to have resources created in"
   type        = string
 }
