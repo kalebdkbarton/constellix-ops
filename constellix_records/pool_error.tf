@@ -14,7 +14,7 @@ resource "constellix_a_record_pool" "firstrecord" {
 }
 
 resource "constellix_a_record" "test_a_pool" {
-  domain_id     = constellix_domain.kaleb.id
+  domain_id     = var.domain_id
   source_type   = "domains"
   record_option = "roundRobin"
   ttl           = 100

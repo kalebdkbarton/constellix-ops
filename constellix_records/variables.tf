@@ -19,3 +19,8 @@ variable "name" {
   description = "constellix api key"
   type        = string
 }
+
+variable "domain_id" {
+  description = "constellix api key"
+  type        = string
+}

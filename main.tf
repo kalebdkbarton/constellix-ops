@@ -1,6 +1,6 @@
 module "constellix_domain" {
-  for_each = local.domains
   source = "./constellix_domains"
+  for_each = local.domains
   apikey = var.apikey
   secretkey = var.secretkey
   domain = each.key
@@ -8,8 +8,10 @@ module "constellix_domain" {
 
 module "constellix_records" {
   source = "./constellix_records"
+  count = module.constellix_domain
   apikey = var.apikey
   secretkey = var.secretkey
   records = toset(local.domains)
   name = local.name
+  domain_id = module.constellix_domain[count.index]
 }

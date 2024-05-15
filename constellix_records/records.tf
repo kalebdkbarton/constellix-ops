@@ -1,6 +1,6 @@
 resource "constellix_a_record" "test_a" {
   for_each      = var.records.a
-  domain_id     = constellix_domain.domain.id
+  domain_id     = var.domain_id
   source_type   = "domains"
   record_option = "roundRobin"
   ttl           = 100
@@ -14,7 +14,7 @@ resource "constellix_a_record" "test_a" {
 
 resource "constellix_aaaa_record" "firstrecord" {
   for_each      = var.records.aaaa
-  domain_id     = constellix_domain.kaleb.id
+  domain_id     = var.domain_id
   source_type   = "domains"
   record_option = "roundRobin"
   ttl           = 100
@@ -30,7 +30,7 @@ resource "constellix_aaaa_record" "firstrecord" {
 
 resource "constellix_cname_record" "firstrecord" {
   for_each      = var.records.cname
-  domain_id     = constellix_domain.kaleb.id
+  domain_id     = var.domain_id
   source_type   = "domains"
   record_option = "roundRobin"
   ttl           = 100

@@ -110,7 +110,7 @@ resource "constellix_a_record_pool" "test_pool" {
 
 # resource "constellix_a_record" "test_a_pool" {
 #   for_each      = local.pools
-#   domain_id     = constellix_domain.kaleb.id
+#   domain_id     = var.domain_id
 #   source_type   = "domains"
 #   record_option = "roundRobin"
 #   ttl           = 100
