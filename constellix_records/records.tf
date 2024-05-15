@@ -18,7 +18,7 @@ resource "constellix_aaaa_record" "firstrecord" {
   source_type   = "domains"
   record_option = "roundRobin"
   ttl           = 100
-  name          = each.key
+  name          = each.key == "root" ? "" : each.key
   type          = "AAAA"
   gtd_region    = 1
   roundrobin {
