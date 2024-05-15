@@ -12,7 +12,7 @@ resource "constellix_a_record_pool" "test_pool" {
       weight       = values.value.weight
       policy       = values.value.policy
       disable_flag = values.value.disable_flag
-      check_id     = resource.constellix_http_check.test_http_check.id
+      check_id     = resource.constellix_http_check.test_http_check[count.index].id
     }
   }
 
@@ -33,13 +33,15 @@ resource "constellix_a_record" "test_a_pool" {
 }
 
 resource "constellix_http_check" "test_http_check" {
-  name          = "malavear-check"
-  host          = "resume.malavear.com"
-  ip_version    = "IPV4"
-  port          = 443
-  protocol_type = "HTTPS"
-  check_sites   = [1, 2]
-  interval = "ONEMINUTE"
-  interval_policy = "ONCEPERSITE"
+  count = length(local.pools)
+  for_each = local.pools[count.index].values
+  name                = "malavear-check"
+  host                = "resume.malavear.com"
+  ip_version          = "IPV4"
+  port                = 443
+  protocol_type       = "HTTPS"
+  check_sites         = [1, 2]
+  interval            = "ONEMINUTE"
+  interval_policy     = "ONCEPERSITE"
   verification_policy = "SIMPLE"
 }
