@@ -15,7 +15,6 @@ locals {
       test   = "4.3.2.1",
       hi     = "10.10.10.10"
       tftest = "3.2.5.1"
-      root   = "8.8.8.8"
     }
     aaaa = {
       www = "5:0:0:0:0:0:1:6"
@@ -23,6 +22,27 @@ locals {
     cname = {
       resume = "resume.malavear.com"
     }
+    aname = {
+      root = "www"
+    }
+    ns = {
+      ns = "ns0.dnsmadeeasy.com"
+    }
+    txt = {
+      root = "v=spf1"
+    }
+    spf = {
+      root = "This is depreciated"
+    }
+    srv = {
+      _tcp = {
+        value    = "www.google.com"
+        port     = 8888
+        priority = 65
+        weight   = 20
+      }
+    }
+
   }
 
   #----------------------------------------------------------------------------
