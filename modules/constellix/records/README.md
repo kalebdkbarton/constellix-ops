@@ -23,12 +23,10 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [constellix_a_record.test_a](https://registry.terraform.io/providers/Constellix/constellix/latest/docs/resources/a_record) | resource |
-| [constellix_a_record_pool.firstrecord](https://registry.terraform.io/providers/Constellix/constellix/latest/docs/resources/a_record_pool) | resource |
-| [constellix_a_record_pool.test_pool](https://registry.terraform.io/providers/Constellix/constellix/latest/docs/resources/a_record_pool) | resource |
-| [constellix_aaaa_record.firstrecord](https://registry.terraform.io/providers/Constellix/constellix/latest/docs/resources/aaaa_record) | resource |
-| [constellix_cname_record.firstrecord](https://registry.terraform.io/providers/Constellix/constellix/latest/docs/resources/cname_record) | resource |
-| [constellix_http_check.test_http_check_pools](https://registry.terraform.io/providers/Constellix/constellix/latest/docs/resources/http_check) | resource |
+| [constellix_a_record.this](https://registry.terraform.io/providers/Constellix/constellix/latest/docs/resources/a_record) | resource |
+| [constellix_a_record.this_pool](https://registry.terraform.io/providers/Constellix/constellix/latest/docs/resources/a_record) | resource |
+| [constellix_aaaa_record.this](https://registry.terraform.io/providers/Constellix/constellix/latest/docs/resources/aaaa_record) | resource |
+| [constellix_cname_record.this](https://registry.terraform.io/providers/Constellix/constellix/latest/docs/resources/cname_record) | resource |
 
 ## Inputs
 
@@ -36,7 +34,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_domain_id"></a> [domain\_id](#input\_domain\_id) | ID of the Constellix Domain to have resources created in | `string` | n/a | yes |
 | <a name="input_note"></a> [note](#input\_note) | Note to add to records | `string` | n/a | yes |
-| <a name="input_pools"></a> [pools](#input\_pools) | Map of pools to have created in Constellix | `map(any)` | n/a | yes |
+| <a name="input_pools"></a> [pools](#input\_pools) | Map of pools created in Constellix | `map(any)` | n/a | yes |
 | <a name="input_records"></a> [records](#input\_records) | Map of records to have created in Constellix | `map(any)` | n/a | yes |
 
 ## Outputs

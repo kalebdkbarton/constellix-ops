@@ -17,8 +17,9 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_constellix_domain"></a> [constellix\_domain](#module\_constellix\_domain) | ./constellix_domains | n/a |
-| <a name="module_constellix_records"></a> [constellix\_records](#module\_constellix\_records) | ./constellix_records | n/a |
+| <a name="module_constellix_domain"></a> [constellix\_domain](#module\_constellix\_domain) | ./modules/constellix/domains | n/a |
+| <a name="module_constellix_pools"></a> [constellix\_pools](#module\_constellix\_pools) | ./modules/constellix/pools | n/a |
+| <a name="module_constellix_records"></a> [constellix\_records](#module\_constellix\_records) | ./modules/constellix/records | n/a |
 
 ## Resources
 

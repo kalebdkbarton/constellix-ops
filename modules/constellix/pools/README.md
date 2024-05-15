@@ -20,17 +20,19 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [constellix_domain.this](https://registry.terraform.io/providers/Constellix/constellix/latest/docs/resources/domain) | resource |
+| [constellix_a_record_pool.this](https://registry.terraform.io/providers/Constellix/constellix/latest/docs/resources/a_record_pool) | resource |
+| [constellix_http_check.this](https://registry.terraform.io/providers/Constellix/constellix/latest/docs/resources/http_check) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_domain"></a> [domain](#input\_domain) | domain to create in constellix | `string` | n/a | yes |
+| <a name="input_note"></a> [note](#input\_note) | Note to add to records | `string` | n/a | yes |
+| <a name="input_pools"></a> [pools](#input\_pools) | Map of pools to have created in Constellix | `map(any)` | n/a | yes |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_domain_id"></a> [domain\_id](#output\_domain\_id) | n/a |
+| <a name="output_pool_info"></a> [pool\_info](#output\_pool\_info) | n/a |
 <!-- END_TF_DOCS -->

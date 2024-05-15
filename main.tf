@@ -5,9 +5,9 @@ module "constellix_domain" {
 }
 
 module "constellix_pools" {
-  source    = "./modules/constellix/pools"
-  note      = local.note
-  pools     = local.pools
+  source = "./modules/constellix/pools"
+  note   = local.note
+  pools  = local.pools
 }
 
 module "constellix_records" {
