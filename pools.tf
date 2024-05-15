@@ -39,7 +39,7 @@ resource "constellix_http_check" "test_http_check" {
   ]))
 
   name                = "malavear-check-${count.index}"
-  host                = constellix_a_record_pool.test_pool[count.index].values[count.index % length(local.pools[count.index].values)].value.value
+  host                = local.pools[count.index / length(local.pools)].values[count.index % length(local.pools[count.index / length(local.pools)].values)].value.value
   fqdn                = "resume.malavear.com"
   ip_version          = "IPV4"
   port                = 443
