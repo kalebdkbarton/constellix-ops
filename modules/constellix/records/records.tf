@@ -40,6 +40,74 @@ resource "constellix_cname_record" "this" {
   note          = var.note
 }
 
+resource "constellix_aname_record" "this" {
+  for_each      = var.records.aname
+  domain_id     = var.domain_id
+  source_type   = "domains"
+  record_option = "roundRobin"
+  ttl           = 100
+  name          = each.key == "root" ? "" : each.key
+  type          = "ANAME"
+  roundrobin {
+    value        = each.value
+  }
+  note          = var.note
+}
+
+resource "constellix_ns_record" "this" {
+  for_each      = var.records.ns
+  domain_id     = var.domain_id
+  source_type   = "domains"
+  ttl           = 100
+  name          = each.key == "root" ? "" : each.key
+  roundrobin {
+    value        = each.value
+  }
+  type          = "NS"
+  note          = var.note
+}
+
+resource "constellix_txt_record" "this" {
+  for_each      = var.records.txt
+  domain_id     = var.domain_id
+  source_type   = "domains"
+  ttl           = 100
+  name          = each.key == "root" ? "" : each.key
+  roundrobin {
+    value        = each.value
+  }
+  type          = "TXT"
+  note          = var.note
+}
+
+resource "constellix_spf_record" "this" {
+  for_each      = var.records.spf
+  domain_id     = var.domain_id
+  source_type   = "domains"
+  ttl           = 100
+  name          = each.key == "root" ? "" : each.key
+  roundrobin {
+    value        = each.value
+  }
+  type          = "SPF"
+  note          = var.note
+}
+
+resource "constellix_srv_record" "this" {
+  for_each      = var.records.srv
+  domain_id   = var.domain_id
+  ttl         = 1800
+  name        = each.key == "root" ? "" : each.key
+  type        = "SRV"
+  source_type = "domains"
+  roundrobin {
+    value        = split(",",each.key)[0]
+    port         = split(",",each.key)[1]
+    priority     = split(",",each.key)[2]
+    weight       = split(",",each.key)[3]
+  }
+}
+
 resource "constellix_a_record" "this_pool" {
   for_each      = var.pools
   domain_id     = var.domain_id

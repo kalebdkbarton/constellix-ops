@@ -35,12 +35,8 @@ locals {
       root = "This is depreciated"
     }
     srv = {
-      _tcp = {
-        value    = "www.google.com"
-        port     = 8888
-        priority = 65
-        weight   = 20
-      }
+      ###### value,port,priority,weight
+      _tcp = "www.google.com,8888,65,20"
     }
 
   }
