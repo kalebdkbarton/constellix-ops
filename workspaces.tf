@@ -18,13 +18,13 @@ locals {
       name = "test_pool1"
       values = [
         {
-          value        = "8.1.1.1"
+          value        = "108.157.142.75"
           weight       = 20
           policy       = "followsonar"
           disable_flag = false
         },
         {
-          value        = "9.1.1.1"
+          value        = "108.157.142.25"
           weight       = 20
           policy       = "followsonar"
           disable_flag = false
@@ -35,13 +35,13 @@ locals {
       name = "test_pool2"
       values = [
         {
-          value        = "10.1.1.1"
+          value        = "108.157.142.97"
           weight       = 20
           policy       = "followsonar"
           disable_flag = false
         },
         {
-          value        = "11.1.1.1"
+          value        = "108.157.142.56"
           weight       = 30
           policy       = "followsonar"
           disable_flag = false
