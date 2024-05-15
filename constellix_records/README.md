@@ -24,11 +24,10 @@ No modules.
 | Name | Type |
 |------|------|
 | [constellix_a_record.test_a](https://registry.terraform.io/providers/Constellix/constellix/latest/docs/resources/a_record) | resource |
-| [constellix_a_record.test_a_pool](https://registry.terraform.io/providers/Constellix/constellix/latest/docs/resources/a_record) | resource |
+| [constellix_a_record_pool.firstrecord](https://registry.terraform.io/providers/Constellix/constellix/latest/docs/resources/a_record_pool) | resource |
 | [constellix_a_record_pool.test_pool](https://registry.terraform.io/providers/Constellix/constellix/latest/docs/resources/a_record_pool) | resource |
 | [constellix_aaaa_record.firstrecord](https://registry.terraform.io/providers/Constellix/constellix/latest/docs/resources/aaaa_record) | resource |
 | [constellix_cname_record.firstrecord](https://registry.terraform.io/providers/Constellix/constellix/latest/docs/resources/cname_record) | resource |
-| [constellix_domain.kaleb](https://registry.terraform.io/providers/Constellix/constellix/latest/docs/resources/domain) | resource |
 | [constellix_http_check.test_http_check_pools](https://registry.terraform.io/providers/Constellix/constellix/latest/docs/resources/http_check) | resource |
 
 ## Inputs
@@ -36,6 +35,10 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_apikey"></a> [apikey](#input\_apikey) | constellix api key | `string` | n/a | yes |
+| <a name="input_domain_id"></a> [domain\_id](#input\_domain\_id) | constellix api key | `string` | n/a | yes |
+| <a name="input_name"></a> [name](#input\_name) | constellix api key | `string` | n/a | yes |
+| <a name="input_pools"></a> [pools](#input\_pools) | n/a | `map(any)` | n/a | yes |
+| <a name="input_records"></a> [records](#input\_records) | n/a | `map(any)` | n/a | yes |
 | <a name="input_secretkey"></a> [secretkey](#input\_secretkey) | constellix api key | `string` | n/a | yes |
 
 ## Outputs

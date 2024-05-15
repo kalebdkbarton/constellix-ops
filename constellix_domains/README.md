@@ -1,6 +1,3 @@
-# constellix-ops
-Testing the constellix terraform repo
-
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
@@ -11,27 +8,31 @@ Testing the constellix terraform repo
 
 ## Providers
 
-No providers.
+| Name | Version |
+|------|---------|
+| <a name="provider_constellix"></a> [constellix](#provider\_constellix) | >= 0.4.5 |
 
 ## Modules
 
-| Name | Source | Version |
-|------|--------|---------|
-| <a name="module_constellix_domain"></a> [constellix\_domain](#module\_constellix\_domain) | ./constellix_domains | n/a |
-| <a name="module_constellix_records"></a> [constellix\_records](#module\_constellix\_records) | ./constellix_records | n/a |
+No modules.
 
 ## Resources
 
-No resources.
+| Name | Type |
+|------|------|
+| [constellix_domain.domain](https://registry.terraform.io/providers/Constellix/constellix/latest/docs/resources/domain) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_apikey"></a> [apikey](#input\_apikey) | constellix api key | `string` | n/a | yes |
+| <a name="input_domain"></a> [domain](#input\_domain) | constellix api key | `string` | n/a | yes |
 | <a name="input_secretkey"></a> [secretkey](#input\_secretkey) | constellix api key | `string` | n/a | yes |
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_domain_id"></a> [domain\_id](#output\_domain\_id) | n/a |
 <!-- END_TF_DOCS -->
