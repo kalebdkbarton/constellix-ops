@@ -3,6 +3,7 @@ locals {
   # Workspace Defaults
   #----------------------------------------------------------------------------
   name = "kaleb_test created with terraform"
+  domains = ["kalebbarton-test.com"]
   # tag defaults
   records = {
     a = {
