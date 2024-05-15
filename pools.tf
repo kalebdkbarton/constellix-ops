@@ -89,8 +89,8 @@ resource "constellix_a_record" "test_a_pool" {
 }
 
 module "sonar"{
-  for_each = local.pools.value
   source = "./sonar"
+  for_each = local.pools.value
   check_type = "http"
   pool_name = each.key
   pool_values = each.value
