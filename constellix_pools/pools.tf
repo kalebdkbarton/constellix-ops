@@ -52,12 +52,11 @@ resource "constellix_a_record_pool" "this" {
 }
 
 # resource "constellix_a_record" "this" {
-#   for_each      = local.pools
 #   domain_id     = var.domain_id
 #   source_type   = "domains"
 #   record_option = "roundRobin"
 #   ttl           = 100
-#   name          = each.key
-#   pools         = [for pool in constellix_a_record_pool.test_pool : pool.id]
+#   name          = ""
+#   pools         = []
 #   note          = local.name
 # }

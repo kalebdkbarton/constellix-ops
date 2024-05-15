@@ -4,7 +4,7 @@ variable "records" {
 }
 
 variable "pools" {
-  description = "Map of pools to have created in Constellix"
+  description = "Map of pools created in Constellix"
   type        = map(any)
 }
 
