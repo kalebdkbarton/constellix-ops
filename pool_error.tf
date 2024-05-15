@@ -14,12 +14,11 @@ resource "constellix_a_record_pool" "firstrecord" {
 }
 
 resource "constellix_a_record" "test_a_pool" {
-  for_each      = local.pools
   domain_id     = constellix_domain.kaleb.id
   source_type   = "domains"
   record_option = "roundRobin"
   ttl           = 100
-  name          = each.key
-  pools         = constellix_a_record_pool.firstrecord.id
+  name          = "firstrecord"
+  pools         = [constellix_a_record_pool.firstrecord.id]
   note          = local.name
 }
