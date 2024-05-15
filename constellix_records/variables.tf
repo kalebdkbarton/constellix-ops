@@ -12,7 +12,7 @@ variable "secretkey" {
 
 variable "records" {
   description = "constellix api key"
-  type        = set
+  type        = map
 }
 
 variable "name" {

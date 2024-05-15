@@ -1,5 +1,5 @@
 module "constellix_domain" {
-  for_each = toset(local.domains)
+  for_each = local.domains
   source = "./constellix_domains"
   apikey = var.apikey
   secretkey = var.secretkey
