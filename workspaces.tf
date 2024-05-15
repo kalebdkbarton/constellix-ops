@@ -26,7 +26,7 @@ locals {
       root = "www"
     }
     ns = {
-      ns = "ns0.dnsmadeeasy.com"
+      ns = "ns0.dnsmadeeasy.com."
     }
     txt = {
       root = "v=spf1"
