@@ -85,22 +85,16 @@ resource "constellix_a_record" "test_a_pool" {
 }
 
 resource "constellix_http_check" "test_http_check_pools" {
-  for_each            = local.pools
+  count = length(flatten([for pool_name, pool in local.pools : [for value in pool.values : "${pool_name}_${value.value}"]]))
 
-  dynamic "value" {
-    for_each = each.value.values
-
-    content {
-      name                = "${each.key}_${value.key}"
-      host                = value.value
-      fqdn                = "resume.malavear.com"
-      ip_version          = "IPV4"
-      port                = 443
-      protocol_type       = "HTTPS"
-      check_sites         = [1, 2]
-      interval            = "ONEMINUTE"
-      interval_policy     = "ONCEPERSITE"
-      verification_policy = "SIMPLE"
-    }
-  }
+  name                = element(flatten([for pool_name, pool in local.pools : [for value in pool.values : "${pool_name}_${value.value}"]]), count.index)
+  host                = element(flatten([for pool_name, pool in local.pools : [for value in pool.values : value.value]]), count.index)
+  fqdn                = "resume.malavear.com"
+  ip_version          = "IPV4"
+  port                = 443
+  protocol_type       = "HTTPS"
+  check_sites         = [1, 2]
+  interval            = "ONEMINUTE"
+  interval_policy     = "ONCEPERSITE"
+  verification_policy = "SIMPLE"
 }
