@@ -20,5 +20,5 @@ resource "constellix_a_record" "test_a_pool" {
   ttl           = 100
   name          = "firstrecord"
   pools         = [constellix_a_record_pool.firstrecord.id]
-  note          = local.name
+  note          = var.name
 }
