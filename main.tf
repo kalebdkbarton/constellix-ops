@@ -1,17 +1,17 @@
 module "constellix_domain" {
-  source   = "./constellix_domains"
+  source   = "./modules/constellix/domains"
   for_each = toset(local.domains)
   domain   = each.key
 }
 
 module "constellix_pools" {
-  source    = "./constellix_pools"
+  source    = "./modules/constellix/pools"
   note      = local.note
   pools     = local.pools
 }
 
 module "constellix_records" {
-  source    = "./constellix_records"
+  source    = "./modules/constellix/records"
   for_each  = module.constellix_domain
   records   = local.records
   note      = local.note

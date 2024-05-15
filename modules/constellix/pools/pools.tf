@@ -50,13 +50,3 @@ resource "constellix_a_record_pool" "this" {
   disable_flag = false
   note         = var.note
 }
-
-# resource "constellix_a_record" "this" {
-#   domain_id     = var.domain_id
-#   source_type   = "domains"
-#   record_option = "roundRobin"
-#   ttl           = 100
-#   name          = ""
-#   pools         = []
-#   note          = local.name
-# }
