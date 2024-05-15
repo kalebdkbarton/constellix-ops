@@ -1,3 +1,59 @@
+locals {
+  pools = [
+    {
+      name = "test_pool1"
+      values = [
+        {
+          value        = "108.157.142.75"
+          weight       = 20
+          policy       = "followsonar"
+          disable_flag = false
+        },
+        {
+          value        = "108.157.142.25"
+          weight       = 20
+          policy       = "followsonar"
+          disable_flag = false
+        }
+      ]
+    },
+    {
+      name = "test_pool2"
+      values = [
+        {
+          value        = "108.157.142.97"
+          weight       = 20
+          policy       = "followsonar"
+          disable_flag = false
+        },
+        {
+          value        = "108.157.142.56"
+          weight       = 30
+          policy       = "followsonar"
+          disable_flag = false
+        }
+      ]
+    },
+    {
+      name = "test_pool3"
+      values = [
+        {
+          value        = "108.157.142.25"
+          weight       = 20
+          policy       = "followsonar"
+          disable_flag = false
+        },
+        {
+          value        = "108.157.142.56"
+          weight       = 30
+          policy       = "followsonar"
+          disable_flag = false
+        }
+      ]
+    }
+  ]
+}
+
 resource "constellix_a_record_pool" "test_pool" {
   count = length(local.pools)
 
