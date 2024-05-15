@@ -1,4 +1,4 @@
-resource "constellix_domain" "domain" {
+resource "constellix_domain" "this" {
   name = var.domain
   soa = {
     primary_nameserver = "ns41.constellix.com."

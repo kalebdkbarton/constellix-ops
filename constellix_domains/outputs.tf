@@ -1,3 +1,3 @@
 output "domain_id" {
-  value = constellix_domain.domain.id
+  value = constellix_domain.this.id
 }

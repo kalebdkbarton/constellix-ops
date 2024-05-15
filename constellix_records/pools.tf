@@ -13,7 +13,7 @@ locals {
   ])
 }
 
-resource "constellix_http_check" "test_http_check_pools" {
+resource "constellix_http_check" "this" {
   for_each = { for value in local.flattened_values : "${value.pool_name}_${value.value}" => value }
 
   name                = each.value.pool_name
@@ -29,7 +29,7 @@ resource "constellix_http_check" "test_http_check_pools" {
 }
 
 
-resource "constellix_a_record_pool" "test_pool" {
+resource "constellix_a_record_pool" "this" {
   for_each               = var.pools
   name                   = each.key
   num_return             = "1"
@@ -42,7 +42,7 @@ resource "constellix_a_record_pool" "test_pool" {
       weight       = values.value.weight
       policy       = values.value.policy
       disable_flag = values.value.disable_flag
-      check_id     = resource.constellix_http_check.test_http_check_pools["${each.key}_${values.value.value}"].id
+      check_id     = resource.constellix_http_check.this["${each.key}_${values.value.value}"].id
     }
   }
 
@@ -51,7 +51,7 @@ resource "constellix_a_record_pool" "test_pool" {
   note         = var.note
 }
 
-# resource "constellix_a_record" "test_a_pool" {
+# resource "constellix_a_record" "this" {
 #   for_each      = local.pools
 #   domain_id     = var.domain_id
 #   source_type   = "domains"

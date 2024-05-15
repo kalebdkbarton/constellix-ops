@@ -1,4 +1,4 @@
-resource "constellix_a_record" "test_a" {
+resource "constellix_a_record" "this" {
   for_each      = var.records.a
   domain_id     = var.domain_id
   source_type   = "domains"
@@ -12,7 +12,7 @@ resource "constellix_a_record" "test_a" {
   note = var.note
 }
 
-resource "constellix_aaaa_record" "firstrecord" {
+resource "constellix_aaaa_record" "this" {
   for_each      = var.records.aaaa
   domain_id     = var.domain_id
   source_type   = "domains"
@@ -28,7 +28,7 @@ resource "constellix_aaaa_record" "firstrecord" {
   note = var.note
 }
 
-resource "constellix_cname_record" "firstrecord" {
+resource "constellix_cname_record" "this" {
   for_each      = var.records.cname
   domain_id     = var.domain_id
   source_type   = "domains"
