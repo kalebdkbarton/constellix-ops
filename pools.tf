@@ -2,17 +2,17 @@ locals {
   flattened_values = flatten([
     for pool_name, pool in local.pools : [
       for value in pool.values : {
-        pool_name       = pool_name
-        value           = value.value
-        fqdn            = value.fqdn
-        weight          = value.weight
-        policy          = value.policy
-        disable_flag    = value.disable_flag
+        pool_name    = pool_name
+        value        = value.value
+        fqdn         = value.fqdn
+        weight       = value.weight
+        policy       = value.policy
+        disable_flag = value.disable_flag
       }
     ]
   ])
 
- pools = {
+  pools = {
     test_pool1 = {
       values = [
         {
@@ -20,14 +20,14 @@ locals {
           weight       = 20
           policy       = "followsonar"
           disable_flag = false
-          fqdn = "resume.malavear.com"
+          fqdn         = "resume.malavear.com"
         },
         {
           value        = "108.157.142.25"
           weight       = 20
           policy       = "followsonar"
           disable_flag = false
-          fqdn = "resume.malavear.com" 
+          fqdn         = "resume.malavear.com"
         }
       ]
     },
@@ -38,14 +38,14 @@ locals {
           weight       = 20
           policy       = "followsonar"
           disable_flag = false
-          fqdn = "resume.malavear.com"
+          fqdn         = "resume.malavear.com"
         },
         {
           value        = "108.157.142.56"
           weight       = 30
           policy       = "followsonar"
           disable_flag = false
-          fqdn = "resume.malavear.com"
+          fqdn         = "resume.malavear.com"
         }
       ]
     },
@@ -56,14 +56,14 @@ locals {
           weight       = 20
           policy       = "followsonar"
           disable_flag = false
-          fqdn = "resume.malavear.com"
+          fqdn         = "resume.malavear.com"
         },
         {
           value        = "108.157.142.56"
           weight       = 30
           policy       = "followsonar"
           disable_flag = false
-          fqdn = "resume.malavear.com"
+          fqdn         = "resume.malavear.com"
         }
       ]
     }
@@ -108,13 +108,13 @@ resource "constellix_a_record_pool" "test_pool" {
   note         = local.name
 }
 
-# resource "constellix_a_record" "test_a_pool" {
-#   for_each      = local.pools
-#   domain_id     = constellix_domain.kaleb.id
-#   source_type   = "domains"
-#   record_option = "roundRobin"
-#   ttl           = 100
-#   name          = each.key
-#   pools         = [for pool in constellix_a_record_pool.test_pool : pool.id]
-#   note          = local.name
-# }
+resource "constellix_a_record" "test_a_pool" {
+  for_each      = local.pools
+  domain_id     = constellix_domain.kaleb.id
+  source_type   = "domains"
+  record_option = "roundRobin"
+  ttl           = 100
+  name          = each.key
+  pools         = [for pool in constellix_a_record_pool.test_pool : pool.id]
+  note          = local.name
+}
