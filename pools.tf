@@ -53,7 +53,7 @@ locals {
 
 resource "constellix_a_record_pool" "test_pool" {
   for_each = local.pools
-  name                   = each.name
+  name                   = each.key
   num_return             = "1"
   min_available_failover = 1
 
