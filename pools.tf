@@ -69,7 +69,7 @@ locals {
 }
 
 resource "constellix_http_check" "test_http_check_pools" {
-  for_each = fully_flattened_pool_ips
+  for_each = local.fully_flattened_pool_ips
 
   name                = each.key
   host                = each.value
