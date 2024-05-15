@@ -1,0 +1,25 @@
+resource "constellix_a_record_pool" "firstrecord" {
+  name                   = "firstrecord"
+  num_return             = "10"
+  min_available_failover = 1
+  values {
+    value        = "8.1.1.1"
+    weight       = 20
+    policy       = "alwayson"
+    disable_flag = false
+  }
+  failed_flag  = false
+  disable_flag = false
+  note         = "First record"
+}
+
+resource "constellix_a_record" "test_a_pool" {
+  for_each      = local.pools
+  domain_id     = constellix_domain.kaleb.id
+  source_type   = "domains"
+  record_option = "roundRobin"
+  ttl           = 100
+  name          = each.key
+  pools         = constellix_a_record_pool.firstrecord.id
+  note          = local.name
+}
