@@ -6,7 +6,7 @@ locals {
   fully_flattened_pool_ips = merge([
     for pool_name, ip_addresses in local.flattened_pool_ips : {
       for ip_address in ip_addresses : 
-      "${pool_name}_${ip_address}" => [ip_address,fqdn] 
+      "${pool_name}_${ip_address}" => ip_address
     }
   ])
 
@@ -72,8 +72,8 @@ resource "constellix_http_check" "test_http_check_pools" {
   for_each = fully_flattened_pool_ips
 
   name                = each.key
-  host                = each.value[0]
-  fqdn                = each.value[1]
+  host                = each.value
+  fqdn                = "resume.malavear.com"
   ip_version          = "IPV4"
   port                = 443
   protocol_type       = "HTTPS"
