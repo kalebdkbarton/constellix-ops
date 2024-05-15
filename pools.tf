@@ -38,7 +38,7 @@ resource "constellix_http_check" "test_http_check" {
   }
 
   name                = "malavear-check-${each.key}"
-  host                = each.value[count.index].value
+  host                = each.value.value
   fqdn                = "resume.malavear.com"
   ip_version          = "IPV4"
   port                = 443
