@@ -1,5 +1,5 @@
 locals {
-  check_ids = constellix_http_check.test_http_check_pools[*].id
+  http_check_ids = { for idx, check in constellix_http_check.test_http_check_pools : idx => check.id }
   pools = {
     test_pool1 = {
       values = [
@@ -65,7 +65,7 @@ resource "constellix_a_record_pool" "test_pool" {
       weight       = values.value.weight
       policy       = values.value.policy
       disable_flag = values.value.disable_flag
-      check_id     = local.check_ids[count.index]
+      check_id     = local.http_check_ids["${each.key}_${values.key}"]
     }
   }
 
