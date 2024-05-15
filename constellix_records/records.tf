@@ -40,7 +40,7 @@ resource "constellix_cname_record" "this" {
   note          = var.note
 }
 
-resource "constellix_a_record" "this" {
+resource "constellix_a_record" "this_pool" {
   for_each      = var.pools
   domain_id     = var.domain_id
   source_type   = "domains"
