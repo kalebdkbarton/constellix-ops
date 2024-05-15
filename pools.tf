@@ -1,7 +1,6 @@
 locals {
-  pools = [
-    {
-      name = "test_pool1"
+  pools = {
+    test_pool1 = {
       values = [
         {
           value        = "108.157.142.75"
@@ -17,8 +16,7 @@ locals {
         }
       ]
     },
-    {
-      name = "test_pool2"
+    test_pool2 = {
       values = [
         {
           value        = "108.157.142.97"
@@ -34,8 +32,7 @@ locals {
         }
       ]
     },
-    {
-      name = "test_pool3"
+    test_pool3 = {
       values = [
         {
           value        = "108.157.142.25"
@@ -51,24 +48,23 @@ locals {
         }
       ]
     }
-  ]
+  }
 }
 
 resource "constellix_a_record_pool" "test_pool" {
-  count = length(local.pools)
-
-  name                   = local.pools[count.index].name
+  for_each = local.pools
+  name                   = each.name
   num_return             = "1"
   min_available_failover = 1
 
   dynamic "values" {
-    for_each = local.pools[count.index].values
+    for_each = each.value.values
     content {
       value        = values.value.value
       weight       = values.value.weight
       policy       = values.value.policy
       disable_flag = values.value.disable_flag
-      check_id     = resource.constellix_http_check.test_http_check[local.pools[count.index].name].id
+      #check_id     = resource.constellix_http_check.test_http_check[each.name].id
     }
   }
 
@@ -78,7 +74,7 @@ resource "constellix_a_record_pool" "test_pool" {
 }
 
 resource "constellix_a_record" "test_a_pool" {
-  count         = length(local.pools)
+  for_each      = local.pools
   domain_id     = constellix_domain.kaleb.id
   source_type   = "domains"
   record_option = "roundRobin"
@@ -88,10 +84,17 @@ resource "constellix_a_record" "test_a_pool" {
   note          = local.name
 }
 
-module "sonar"{
-  source = "./sonar"
-  for_each = local.pools
-  check_type = "http"
-  pool_name = each.key
-  pool_values = each.value
-}
+# resource "constellix_http_check" "test_http_check_pools" {
+#   for_each = var.pool_values.value
+
+#   name                = "${var.pool_name}-${each.value.value}"
+#   host                = each.value.value
+#   fqdn                = "resume.malavear.com"
+#   ip_version          = "IPV4"
+#   port                = 443
+#   protocol_type       = "HTTPS"
+#   check_sites         = [1, 2]
+#   interval            = "ONEMINUTE"
+#   interval_policy     = "ONCEPERSITE"
+#   verification_policy = "SIMPLE"
+# }
