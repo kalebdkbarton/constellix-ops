@@ -11,5 +11,11 @@ locals {
       hi     = "10.10.10.10"
       tftest = "3.2.5.1"
     }
+    aaaa = {
+      www = "5:0:0:0:0:0:1:6"
+    }
+    cname = {
+      resume = "resume.malavear.com"
+    }
   }
 }
