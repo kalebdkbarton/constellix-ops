@@ -71,7 +71,7 @@ locals {
 }
 
 resource "constellix_http_check" "test_http_check_pools" {
-  for_each = { for idx, value in local.flattened_values : idx => value }
+  for_each = { for value in local.flattened_values : "${value.pool_name}_${value.value}" => value }
 
   name                = each.value.pool_name
   host                = each.value.value
@@ -84,6 +84,7 @@ resource "constellix_http_check" "test_http_check_pools" {
   interval_policy     = "ONCEPERSITE"
   verification_policy = "SIMPLE"
 }
+
 
 resource "constellix_a_record_pool" "test_pool" {
   for_each               = local.pools
