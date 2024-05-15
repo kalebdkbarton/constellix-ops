@@ -13,5 +13,5 @@ module "constellix_records" {
   secretkey  = var.secretkey
   records    = local.records
   name       = local.name
-  domain_id  = each.value.id  # Assuming `id` is the attribute that uniquely identifies each domain
+  domain_id  = each.value.domain_id
 }
