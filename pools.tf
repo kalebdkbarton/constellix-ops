@@ -33,14 +33,12 @@ resource "constellix_a_record" "test_a_pool" {
 }
 
 resource "constellix_http_check" "test_http_check" {
-  count = length(flatten([
-    for pool in local.pools : [
-      for value in pool.values : value
-    ]
-  ]))
+  for_each = {
+    for pool in local.pools : "${pool.name}" => pool.values
+  }
 
-  name                = "malavear-check-${count.index}"
-  host                = local.pools[count.index / length([for pool in local.pools : pool.values])].values[count.index % length(local.pools)].value
+  name                = "malavear-check-${each.key}"
+  host                = each.value[count.index].value
   fqdn                = "resume.malavear.com"
   ip_version          = "IPV4"
   port                = 443
