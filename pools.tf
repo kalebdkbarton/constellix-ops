@@ -12,7 +12,7 @@ resource "constellix_a_record_pool" "test_pool" {
       weight       = values.value.weight
       policy       = values.value.policy
       disable_flag = values.value.disable_flag
-      #check_id     = resource.constellix_http_check.test_http_check[count.index].id
+      check_id     = resource.constellix_http_check.test_http_check[local.pools[count.index].name].id
     }
   }
 
