@@ -11,7 +11,7 @@ module "constellix_records" {
   for_each   = module.constellix_domain
   apikey     = var.apikey
   secretkey  = var.secretkey
-  records    = local.domains
+  records    = local.records
   name       = local.name
   domain_id  = each.value.id  # Assuming `id` is the attribute that uniquely identifies each domain
 }
