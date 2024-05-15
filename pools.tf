@@ -33,13 +33,12 @@ resource "constellix_a_record" "test_a_pool" {
 }
 
 resource "constellix_http_check" "test_http_check" {
-  for_each = flatten([
-    for pool in local.pools :
-    [for value in pool.values : value]
-  ])
+  for_each = {
+    for pool in local.pools : "${pool.name}" => pool.values
+  }
 
-  name                = "malavear-check-${count.index}"
-  host                = each.value
+  name                = "malavear-check-${each.key}-${each.value.value}"
+  host                = each.value.value
   fqdn                = "resume.malavear.com"
   ip_version          = "IPV4"
   port                = 443

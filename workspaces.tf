@@ -47,6 +47,23 @@ locals {
           disable_flag = false
         }
       ]
+    },
+    {
+      name = "test_pool3"
+      values = [
+        {
+          value        = "108.157.142.25"
+          weight       = 20
+          policy       = "followsonar"
+          disable_flag = false
+        },
+        {
+          value        = "108.157.142.56"
+          weight       = 30
+          policy       = "followsonar"
+          disable_flag = false
+        }
+      ]
     }
   ]
 
