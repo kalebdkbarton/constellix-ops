@@ -79,7 +79,7 @@ resource "constellix_a_record" "test_a_pool" {
   source_type   = "domains"
   record_option = "roundRobin"
   ttl           = 100
-  name          = local.pools[count.index].name
+  name          = each.key
   pools         = [for pool in constellix_a_record_pool.test_pool : pool.id]
   note          = local.name
 }
