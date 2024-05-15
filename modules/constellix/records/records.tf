@@ -101,10 +101,10 @@ resource "constellix_srv_record" "this" {
   type        = "SRV"
   source_type = "domains"
   roundrobin {
-    value        = split(",",each.key)[0]
-    port         = split(",",each.key)[1]
-    priority     = split(",",each.key)[2]
-    weight       = split(",",each.key)[3]
+    value        = split(",",each.value)[0]
+    port         = split(",",each.value)[1]
+    priority     = split(",",each.value)[2]
+    weight       = split(",",each.value)[3]
   }
 }
 
