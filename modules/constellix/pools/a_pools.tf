@@ -1,5 +1,5 @@
 locals {
-  flattened_values = flatten([
+  falttened_a_values = flatten([
     for pool_name, pool in var.pools.a : [
       for value in pool.values : {
         pool_name    = pool_name
@@ -14,7 +14,7 @@ locals {
 }
 
 resource "constellix_http_check" "this" {
-  for_each = { for value in local.flattened_values : "${value.pool_name}_${value.value}" => value }
+  for_each = { for value in local.falttened_a_values : "${value.pool_name}_${value.value}" => value }
 
   name                = each.value.pool_name
   host                = each.value.value
