@@ -67,7 +67,7 @@ resource "constellix_hinfo_record" "this" {
 }
 
 resource "constellix_http_redirection_record" "this" {
-  for_each         = var.records.srv
+  for_each         = var.records.httpredirection
   domain_id        = var.domain_id
   source_type      = "domains"
   name             = each.key == "root" ? "" : each.key

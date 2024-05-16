@@ -17,7 +17,7 @@ locals {
       www = "5:0:0:0:0:0:1:6"
     }
     aname = {
-      root = "www"
+      root = "google.com."
     }
     cname = {
       resume = "resume.malavear.com"
@@ -64,7 +64,7 @@ locals {
       root = "v=spf1"
     }
     ns = {
-      ns = "ns0.dnsmadeeasy.com."
+      ns = "ns1.dnsmadeeasy.com."
     }
   }
 
