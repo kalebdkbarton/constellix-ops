@@ -1,6 +1,6 @@
 locals {
   flattened_values = flatten([
-    for pool_name, pool in var.pools : [
+    for pool_name, pool in var.pools.a : [
       for value in pool.values : {
         pool_name    = pool_name
         value        = value.value
