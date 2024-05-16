@@ -13,7 +13,7 @@ locals {
   ])
 }
 
-resource "constellix_http_check" "this" {
+resource "constellix_http_check" "this_cname" {
   for_each = { for value in local.falttened_cname_values : "${value.pool_name}_${value.value}" => value }
 
   name                = each.value.pool_name
