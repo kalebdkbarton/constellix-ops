@@ -206,7 +206,7 @@ resource "constellix_rp_record" "this" {
     content {
       mailbox      = split(",", roundrobin.value)[0]
       txt          = split(",", roundrobin.value)[1]
-      disable_flag = "false"
+      disable_flag = ""
     }
   }
 }
@@ -277,7 +277,7 @@ resource "constellix_ns_record" "this" {
     for_each = each.value
     content {
       value = roundrobin.value
-      disable_flag = "false"
+      disable_flag = ""
     }
   }
 

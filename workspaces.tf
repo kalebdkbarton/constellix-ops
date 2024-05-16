@@ -64,7 +64,7 @@ locals {
       root = ["v=spf1"]
     }
     ns = {
-      #ns = ["ns0.dnsmadeeasy.com."]
+      ns = ["ns0.dnsmadeeasy.com."]
     }
   }
 
