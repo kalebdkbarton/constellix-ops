@@ -21,7 +21,9 @@ No modules.
 | Name | Type |
 |------|------|
 | [constellix_a_record_pool.this](https://registry.terraform.io/providers/Constellix/constellix/latest/docs/resources/a_record_pool) | resource |
-| [constellix_http_check.this](https://registry.terraform.io/providers/Constellix/constellix/latest/docs/resources/http_check) | resource |
+| [constellix_cname_record_pool.this](https://registry.terraform.io/providers/Constellix/constellix/latest/docs/resources/cname_record_pool) | resource |
+| [constellix_http_check.this_a](https://registry.terraform.io/providers/Constellix/constellix/latest/docs/resources/http_check) | resource |
+| [constellix_http_check.this_cname](https://registry.terraform.io/providers/Constellix/constellix/latest/docs/resources/http_check) | resource |
 
 ## Inputs
 
@@ -34,5 +36,6 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_pool_info"></a> [pool\_info](#output\_pool\_info) | n/a |
+| <a name="output_a_pool_info"></a> [a\_pool\_info](#output\_a\_pool\_info) | n/a |
+| <a name="output_cname_pool_info"></a> [cname\_pool\_info](#output\_cname\_pool\_info) | n/a |
 <!-- END_TF_DOCS -->
