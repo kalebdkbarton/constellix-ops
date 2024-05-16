@@ -30,7 +30,7 @@ resource "constellix_http_check" "this" {
 
 
 resource "constellix_a_record_pool" "this" {
-  for_each               = var.pools
+  for_each               = var.pools.a
   name                   = each.key
   num_return             = "1"
   min_available_failover = 1

@@ -11,25 +11,47 @@ locals {
 
   records = {
     a = {
-      www    = "1.2.3.4",
-      test   = "4.3.2.1",
-      hi     = "10.10.10.10"
-      tftest = "3.2.5.1"
+      www = "1.2.3.4"
     }
     aaaa = {
       www = "5:0:0:0:0:0:1:6"
     }
-    cname = {
-      resume = "resume.malavear.com"
-    }
     aname = {
       root = "www"
     }
-    ns = {
-      ns = "ns0.dnsmadeeasy.com."
+    cname = {
+      resume = "resume.malavear.com"
     }
-    txt = {
-      root = "v=spf1"
+    hinfo = {
+      ###### cpu,os
+      _tcp = "quad core,linux2"
+    }
+    httpredirection = {
+      red = "https://www.google.com"
+    }
+    mx = {
+      ###### level,value
+      root = "10,mail.example.com"
+    }
+    naptr = {
+      ###### order,preference,flags,service,regular_expression,replacement
+      root = "10,100,s,SIP+D2U,hello,foobar.example.com."
+    }
+    caa = {
+      # 1 for [ Custom ], 2 for [ No Provider ], 3 for Comodo, 4 for Digicert, 5 for Entrust, 6 for GeoTrust, 7 for Izenpe, 8 for Lets Encrypt, 9 for Symantec, 10 for Thawte
+      ###### caa_provider_id,tag,data,flag
+      root = "3,issue,como.com,0"
+    }
+    cert = {
+      ###### certificate_type,key_tag,certificate,algorithm
+      root = "20,30,certificate1,100"
+    }
+    ptr = {
+      root = "10"
+    }
+    rp = {
+      ###### mailbox,txt
+      root = "one.com,domain.com"
     }
     spf = {
       root = "This is depreciated"
@@ -38,66 +60,73 @@ locals {
       ###### value,port,priority,weight
       _tcp = "www.google.com,8888,65,20"
     }
-
+    txt = {
+      root = "v=spf1"
+    }
+    ns = {
+      ns = "ns0.dnsmadeeasy.com."
+    }
   }
 
   #----------------------------------------------------------------------------
   # Pools
   #----------------------------------------------------------------------------
   pools = {
-    test_pool1 = {
-      values = [
-        {
-          value        = "108.157.142.75"
-          weight       = 20
-          policy       = "followsonar"
-          disable_flag = false
-          fqdn         = "resume.malavear.com"
-        },
-        {
-          value        = "108.157.142.25"
-          weight       = 20
-          policy       = "followsonar"
-          disable_flag = false
-          fqdn         = "resume.malavear.com"
-        }
-      ]
-    },
-    test_pool2 = {
-      values = [
-        {
-          value        = "108.157.142.97"
-          weight       = 20
-          policy       = "followsonar"
-          disable_flag = false
-          fqdn         = "resume.malavear.com"
-        },
-        {
-          value        = "108.157.142.56"
-          weight       = 30
-          policy       = "followsonar"
-          disable_flag = false
-          fqdn         = "resume.malavear.com"
-        }
-      ]
-    },
-    test_pool3 = {
-      values = [
-        {
-          value        = "108.157.142.25"
-          weight       = 20
-          policy       = "followsonar"
-          disable_flag = false
-          fqdn         = "resume.malavear.com"
-        },
-        {
-          value        = "108.157.142.56"
-          weight       = 30
-          policy       = "followsonar"
-          disable_flag = false
-          fqdn         = "resume.malavear.com"
-        }
-      ]
+    a = {
+      test_pool1 = {
+        values = [
+          {
+            value        = "108.157.142.75"
+            weight       = 20
+            policy       = "followsonar"
+            disable_flag = false
+            fqdn         = "resume.malavear.com"
+          },
+          {
+            value        = "108.157.142.25"
+            weight       = 20
+            policy       = "followsonar"
+            disable_flag = false
+            fqdn         = "resume.malavear.com"
+          }
+        ]
+      },
+      test_pool2 = {
+        values = [
+          {
+            value        = "108.157.142.97"
+            weight       = 20
+            policy       = "followsonar"
+            disable_flag = false
+            fqdn         = "resume.malavear.com"
+          },
+          {
+            value        = "108.157.142.56"
+            weight       = 30
+            policy       = "followsonar"
+            disable_flag = false
+            fqdn         = "resume.malavear.com"
+          }
+        ]
+      },
+      test_pool3 = {
+        values = [
+          {
+            value        = "108.157.142.25"
+            weight       = 20
+            policy       = "followsonar"
+            disable_flag = false
+            fqdn         = "resume.malavear.com"
+          },
+          {
+            value        = "108.157.142.56"
+            weight       = 30
+            policy       = "followsonar"
+            disable_flag = false
+            fqdn         = "resume.malavear.com"
+          }
+        ]
+      }
     }
   }
 }
