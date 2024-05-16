@@ -115,20 +115,20 @@ locals {
     aaaa = {
       test_aaaa_pool1 = {
         values = [
-          # {
-          #   value        = "2600:9000:20e9:c000:19:5f0c:4440:93a1"
-          #   weight       = 20
-          #   policy       = "followsonar"
-          #   disable_flag = false
-          #   fqdn         = "resume.malavear.com"
-          # },
-          # {
-          #   value        = "2600:9000:20e9:8800:19:5f0c:4440:93a1"
-          #   weight       = 20
-          #   policy       = "followsonar"
-          #   disable_flag = false
-          #   fqdn         = "resume.malavear.com"
-          # }
+          {
+            value        = "2600:9000:20e9:c000:19:5f0c:4440:93a1"
+            weight       = 20
+            policy       = "followsonar"
+            disable_flag = false
+            fqdn         = "resume.malavear.com"
+          },
+          {
+            value        = "2600:9000:20e9:8800:19:5f0c:4440:93a1"
+            weight       = 20
+            policy       = "followsonar"
+            disable_flag = false
+            fqdn         = "resume.malavear.com"
+          }
         ]
       }
     }
