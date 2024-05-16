@@ -19,7 +19,7 @@ resource "constellix_http_check" "this_aaaa" {
   name                = each.value.pool_name
   host                = each.value.value
   fqdn                = each.value.fqdn
-  ip_version          = "IPV4"
+  ip_version          = "IPV6"
   port                = 443
   protocol_type       = "HTTPS"
   check_sites         = [1, 2]
