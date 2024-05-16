@@ -5,12 +5,16 @@ resource "constellix_a_record" "this" {
   record_option = "roundRobin"
   ttl           = 100
   name          = each.key == "root" ? "" : each.key
-  roundrobin {
-    value        = each.value
-    disable_flag = "false"
+  dynamic "roundrobin" {
+    for_each = each.value
+    content {
+      value        = roundrobin.value
+      disable_flag = false
+    }
   }
   note = var.note
 }
+
 
 resource "constellix_aaaa_record" "this" {
   for_each      = var.records.aaaa
@@ -21,10 +25,15 @@ resource "constellix_aaaa_record" "this" {
   name          = each.key == "root" ? "" : each.key
   type          = "AAAA"
   gtd_region    = 1
-  roundrobin {
-    value        = each.value
-    disable_flag = "false"
+
+  dynamic "roundrobin" {
+    for_each = each.value
+    content {
+      value        = roundrobin.value
+      disable_flag = false
+    }
   }
+
   note = var.note
 }
 
@@ -36,11 +45,17 @@ resource "constellix_aname_record" "this" {
   ttl           = 100
   name          = each.key == "root" ? "" : each.key
   type          = "ANAME"
-  roundrobin {
-    value = each.value
+
+  dynamic "roundrobin" {
+    for_each = each.value
+    content {
+      value = roundrobin.value
+    }
   }
+
   note = var.note
 }
+
 resource "constellix_cname_record" "this" {
   for_each      = var.records.cname
   domain_id     = var.domain_id
@@ -48,7 +63,7 @@ resource "constellix_cname_record" "this" {
   record_option = "roundRobin"
   ttl           = 100
   name          = each.key
-  host          = each.value
+  host          = each.value[0]
   type          = "CNAME"
   note          = var.note
 }
@@ -60,9 +75,13 @@ resource "constellix_hinfo_record" "this" {
   name        = each.key == "root" ? "" : each.key
   source_type = "domains"
   type        = "HINFO"
-  roundrobin {
-    cpu = split(",", each.value)[0]
-    os  = split(",", each.value)[1]
+
+  dynamic "roundrobin" {
+    for_each = each.value
+    content {
+      cpu = split(",", roundrobin.value)[0]
+      os  = split(",", roundrobin.value)[1]
+    }
   }
 }
 
@@ -73,7 +92,7 @@ resource "constellix_http_redirection_record" "this" {
   name             = each.key == "root" ? "" : each.key
   ttl              = 1800
   redirect_type_id = 1
-  url              = each.value
+  url              = each.value[0]
   type             = "HTTPRedirection"
 }
 
@@ -84,11 +103,16 @@ resource "constellix_mx_record" "this" {
   name        = each.key == "root" ? "" : each.key
   source_type = "domains"
   type        = "MX"
-  roundrobin {
-    level = split(",", each.value)[0]
-    value = split(",", each.value)[1]
+
+  dynamic "roundrobin" {
+    for_each = each.value
+    content {
+      level = split(",", roundrobin.value)[0]
+      value = split(",", roundrobin.value)[1]
+    }
   }
 }
+
 
 resource "constellix_naptr_record" "this" {
   for_each    = var.records.naptr
@@ -97,14 +121,18 @@ resource "constellix_naptr_record" "this" {
   name        = each.key == "root" ? "" : each.key
   source_type = "domains"
   type        = "NAPTR"
-  roundrobin {
-    order              = split(",", each.value)[0]
-    preference         = split(",", each.value)[1]
-    flags              = split(",", each.value)[2]
-    service            = split(",", each.value)[3]
-    regular_expression = split(",", each.value)[4]
-    replacement        = split(",", each.value)[5]
-    disable_flag       = false
+
+  dynamic "roundrobin" {
+    for_each = each.value
+    content {
+      order              = split(",", roundrobin.value)[0]
+      preference         = split(",", roundrobin.value)[1]
+      flags              = split(",", roundrobin.value)[2]
+      service            = split(",", roundrobin.value)[3]
+      regular_expression = split(",", roundrobin.value)[4]
+      replacement        = split(",", roundrobin.value)[5]
+      disable_flag       = false
+    }
   }
 }
 
@@ -115,12 +143,16 @@ resource "constellix_caa_record" "this" {
   name        = each.key == "root" ? "" : each.key
   source_type = "domains"
   type        = "CAA"
-  roundrobin {
-    caa_provider_id = split(",", each.value)[0]
-    tag             = split(",", each.value)[1]
-    data            = split(",", each.value)[2]
-    flag            = split(",", each.value)[3]
-    disable_flag    = false
+
+  dynamic "roundrobin" {
+    for_each = each.value
+    content {
+      caa_provider_id = split(",", roundrobin.value)[0]
+      tag             = split(",", roundrobin.value)[1]
+      data            = split(",", roundrobin.value)[2]
+      flag            = split(",", roundrobin.value)[3]
+      disable_flag    = false
+    }
   }
 }
 
@@ -131,12 +163,16 @@ resource "constellix_cert_record" "this" {
   name        = each.key == "root" ? "" : each.key
   source_type = "domains"
   type        = "CERT"
-  roundrobin {
-    certificate_type = split(",", each.value)[0]
-    key_tag          = split(",", each.value)[1]
-    certificate      = split(",", each.value)[2]
-    algorithm        = split(",", each.value)[3]
-    disable_flag     = false
+
+  dynamic "roundrobin" {
+    for_each = each.value
+    content {
+      certificate_type = split(",", roundrobin.value)[0]
+      key_tag          = split(",", roundrobin.value)[1]
+      certificate      = split(",", roundrobin.value)[2]
+      algorithm        = split(",", roundrobin.value)[3]
+      disable_flag     = false
+    }
   }
 }
 
@@ -147,9 +183,13 @@ resource "constellix_ptr_record" "this" {
   name        = each.key == "root" ? "" : each.key
   source_type = "domains"
   type        = "PTR"
-  roundrobin {
-    value        = each.value
-    disable_flag = false
+
+  dynamic "roundrobin" {
+    for_each = each.value
+    content {
+      value        = roundrobin.value
+      disable_flag = false
+    }
   }
 }
 
@@ -160,10 +200,14 @@ resource "constellix_rp_record" "this" {
   name        = each.key == "root" ? "" : each.key
   source_type = "domains"
   type        = "RP"
-  roundrobin {
-    mailbox      = split(",", each.value)[0]
-    txt          = split(",", each.value)[1]
-    disable_flag = false
+
+  dynamic "roundrobin" {
+    for_each = each.value
+    content {
+      mailbox      = split(",", roundrobin.value)[0]
+      txt          = split(",", roundrobin.value)[1]
+      disable_flag = false
+    }
   }
 }
 
@@ -173,9 +217,14 @@ resource "constellix_spf_record" "this" {
   source_type = "domains"
   ttl         = 100
   name        = each.key == "root" ? "" : each.key
-  roundrobin {
-    value = each.value
+
+  dynamic "roundrobin" {
+    for_each = each.value
+    content {
+      value = roundrobin.value
+    }
   }
+
   type = "SPF"
   note = var.note
 }
@@ -187,11 +236,15 @@ resource "constellix_srv_record" "this" {
   name        = each.key == "root" ? "" : each.key
   type        = "SRV"
   source_type = "domains"
-  roundrobin {
-    value    = split(",", each.value)[0]
-    port     = split(",", each.value)[1]
-    priority = split(",", each.value)[2]
-    weight   = split(",", each.value)[3]
+
+  dynamic "roundrobin" {
+    for_each = each.value
+    content {
+      value    = split(",", roundrobin.value)[0]
+      port     = split(",", roundrobin.value)[1]
+      priority = split(",", roundrobin.value)[2]
+      weight   = split(",", roundrobin.value)[3]
+    }
   }
 }
 
@@ -201,21 +254,32 @@ resource "constellix_txt_record" "this" {
   source_type = "domains"
   ttl         = 100
   name        = each.key == "root" ? "" : each.key
-  roundrobin {
-    value = each.value
+
+  dynamic "roundrobin" {
+    for_each = each.value
+    content {
+      value = roundrobin.value
+    }
   }
+
   type = "TXT"
   note = var.note
 }
+
 resource "constellix_ns_record" "this" {
   for_each    = var.records.ns
   domain_id   = var.domain_id
   source_type = "domains"
   ttl         = 100
   name        = each.key == "root" ? "" : each.key
-  roundrobin {
-    value = each.value
+
+  dynamic "roundrobin" {
+    for_each = each.value
+    content {
+      value = roundrobin.value
+    }
   }
+
   type = "NS"
   note = var.note
 }

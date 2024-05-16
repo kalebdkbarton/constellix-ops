@@ -11,60 +11,60 @@ locals {
 
   records = {
     a = {
-      www = "1.2.3.4"
+      www = ["1.2.3.4"]
     }
     aaaa = {
-      www = "5:0:0:0:0:0:1:6"
+      www = ["5:0:0:0:0:0:1:6"]
     }
     aname = {
-      root = "google.com."
+      root = ["google.com."]
     }
     cname = {
-      resume = "resume.malavear.com"
+      resume = ["resume.malavear.com"] #only put 1 value in this
     }
     hinfo = {
       ###### cpu,os
-      _tcp = "quad core,linux2"
+      _tcp = ["quad core,linux2"]
     }
     httpredirection = {
-      red = "https://www.google.com"
+      red = ["https://www.google.com"] #only put 1 value in this
     }
     mx = {
       ###### level,value
-      root = "10,mail.example.com"
+      root = ["10,mail.example.com"]
     }
     naptr = {
       ###### order,preference,flags,service,regular_expression,replacement
-      root = "10,100,s,SIP+D2U,hello,foobar.example.com."
+      root = ["10,100,s,SIP+D2U,hello,foobar.example.com."]
     }
     caa = {
       # 1 for [ Custom ], 2 for [ No Provider ], 3 for Comodo, 4 for Digicert, 5 for Entrust, 6 for GeoTrust, 7 for Izenpe, 8 for Lets Encrypt, 9 for Symantec, 10 for Thawte
       ###### caa_provider_id,tag,data,flag
-      root = "3,issue,como.com,0"
+      root = ["3,issue,como.com,0"]
     }
     cert = {
       ###### certificate_type,key_tag,certificate,algorithm
-      root = "20,30,certificate1,100"
+      root = ["20,30,certificate1,100"]
     }
     ptr = {
-      root = "10"
+      root = ["10"]
     }
     rp = {
       ###### mailbox,txt
-      root = "one.com,domain.com"
+      root = ["one.com,domain.com"]
     }
     spf = {
-      root = "This is depreciated"
+      root = ["This is depreciated"]
     }
     srv = {
       ###### value,port,priority,weight
-      _tcp = "www.google.com,8888,65,20"
+      _tcp = ["www.google.com,8888,65,20"]
     }
     txt = {
-      root = "v=spf1"
+      root = ["v=spf1"]
     }
     ns = {
-      ns = "ns1.dnsmadeeasy.com."
+      ns = ["ns1.dnsmadeeasy.com."]
     }
   }
 
