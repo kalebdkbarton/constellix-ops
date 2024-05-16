@@ -42,7 +42,7 @@ resource "constellix_a_record_pool" "this" {
       weight       = values.value.weight
       policy       = values.value.policy
       disable_flag = values.value.disable_flag
-      check_id     = resource.constellix_http_check.this["${each.key}_${values.value.value}"].id
+      check_id     = resource.constellix_http_check.this_a["${each.key}_${values.value.value}"].id
     }
   }
 
