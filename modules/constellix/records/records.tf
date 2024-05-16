@@ -277,7 +277,7 @@ resource "constellix_ns_record" "this" {
     for_each = each.value
     content {
       value = roundrobin.value
-      disable_flag = ""
+      disable_flag = "false"
     }
   }
 
