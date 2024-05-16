@@ -13,6 +13,11 @@ variable "cname_pools" {
   type        = map(any)
 }
 
+variable "aaaa_pools" {
+  description = "Map of AAAA record pools created in Constellix"
+  type        = map(any)
+}
+
 variable "note" {
   description = "Note to add to records"
   type        = string

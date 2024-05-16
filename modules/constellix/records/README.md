@@ -45,6 +45,7 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_a_pools"></a> [a\_pools](#input\_a\_pools) | Map of A record pools created in Constellix | `map(any)` | n/a | yes |
+| <a name="input_aaaa_pools"></a> [aaaa\_pools](#input\_aaaa\_pools) | Map of AAAA record pools created in Constellix | `map(any)` | n/a | yes |
 | <a name="input_cname_pools"></a> [cname\_pools](#input\_cname\_pools) | Map of CNAME record pools created in Constellix | `map(any)` | n/a | yes |
 | <a name="input_domain_id"></a> [domain\_id](#input\_domain\_id) | ID of the Constellix Domain to have resources created in | `string` | n/a | yes |
 | <a name="input_note"></a> [note](#input\_note) | Note to add to records | `string` | n/a | yes |
