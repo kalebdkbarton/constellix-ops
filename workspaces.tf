@@ -73,7 +73,7 @@ locals {
   #----------------------------------------------------------------------------
   pools = {
     a = {
-      test_pool1 = {
+      test_a_pool1 = {
         values = [
           {
             value        = "108.157.142.75"
@@ -90,37 +90,21 @@ locals {
             fqdn         = "resume.malavear.com"
           }
         ]
-      },
-      test_pool2 = {
+      }
+    }
+    cname = {
+      test_cname_pool1 = {
         values = [
           {
-            value        = "108.157.142.97"
+            value        = "resume.malavear.com"
             weight       = 20
             policy       = "followsonar"
             disable_flag = false
             fqdn         = "resume.malavear.com"
           },
           {
-            value        = "108.157.142.56"
-            weight       = 30
-            policy       = "followsonar"
-            disable_flag = false
-            fqdn         = "resume.malavear.com"
-          }
-        ]
-      },
-      test_pool3 = {
-        values = [
-          {
-            value        = "108.157.142.25"
+            value        = "malavear.com"
             weight       = 20
-            policy       = "followsonar"
-            disable_flag = false
-            fqdn         = "resume.malavear.com"
-          },
-          {
-            value        = "108.157.142.56"
-            weight       = 30
             policy       = "followsonar"
             disable_flag = false
             fqdn         = "resume.malavear.com"

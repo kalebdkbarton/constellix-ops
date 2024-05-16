@@ -3,8 +3,13 @@ variable "records" {
   type        = map(any)
 }
 
-variable "pools" {
-  description = "Map of pools created in Constellix"
+variable "a_pools" {
+  description = "Map of A record pools created in Constellix"
+  type        = map(any)
+}
+
+variable "cname_pools" {
+  description = "Map of CNAME record pools created in Constellix"
   type        = map(any)
 }
 

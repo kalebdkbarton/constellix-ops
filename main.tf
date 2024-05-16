@@ -11,10 +11,11 @@ module "constellix_pools" {
 }
 
 module "constellix_records" {
-  source    = "./modules/constellix/records"
-  for_each  = module.constellix_domain
-  records   = local.records
-  note      = local.note
-  pools     = module.constellix_pools.pool_info
-  domain_id = each.value.domain_id
+  source      = "./modules/constellix/records"
+  for_each    = module.constellix_domain
+  records     = local.records
+  note        = local.note
+  a_pools     = module.constellix_pools.a_pool_info
+  cname_pools = module.constellix_pools.cname_pool_info
+  domain_id   = each.value.domain_id
 }
