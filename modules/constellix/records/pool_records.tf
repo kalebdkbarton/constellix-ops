@@ -1,7 +1,7 @@
 resource "constellix_a_record" "this_pool" {
   for_each      = var.a_pools
   domain_id     = var.domain_id
-  source_type   = "pools"
+  source_type   = "pool"
   record_option = "roundRobin"
   ttl           = 100
   name          = each.key
@@ -12,7 +12,7 @@ resource "constellix_a_record" "this_pool" {
 resource "constellix_cname_record" "this_pool" {
   for_each      = var.cname_pools
   domain_id     = var.domain_id
-  source_type   = "pools"
+  source_type   = "pool"
   record_option = "roundRobin"
   ttl           = 100
   name          = each.key
@@ -23,7 +23,7 @@ resource "constellix_cname_record" "this_pool" {
 resource "constellix_aaaa_record" "this_pool" {
   for_each      = var.aaaa_pools
   domain_id     = var.domain_id
-  source_type   = "pools"
+  source_type   = "pool"
   record_option = "roundRobin"
   ttl           = 100
   name          = each.key
