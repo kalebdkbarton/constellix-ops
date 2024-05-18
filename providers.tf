@@ -1,6 +1,6 @@
 provider "constellix" {
   # constellix Api key
   apikey = var.apikey
-  # cosntellix secret key
+  # constellix secret key
   secretkey = var.secretkey
 }
