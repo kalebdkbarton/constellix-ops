@@ -2,8 +2,8 @@ locals {
   #----------------------------------------------------------------------------
   # Workspace Defaults
   #----------------------------------------------------------------------------
-  note    = "kaleb_test created with terraform"
-  domains = ["kalebbarton-test.com"]
+  note    = "Test created with terraform"
+  domains = ["constellix-terraform-test.com"]
 
   #----------------------------------------------------------------------------
   # Records
@@ -20,7 +20,7 @@ locals {
       root = ["google.com."]
     }
     cname = {
-      resume = ["resume.malavear.com"] #only put 1 value in this
+      google = ["google.com"] #only put 1 value in this
     }
     hinfo = {
       ###### cpu,os
@@ -76,18 +76,18 @@ locals {
       test_a_pool1 = {
         values = [
           {
-            value        = "108.157.142.75"
+            value        = "142.250.191.110"
             weight       = 20
             policy       = "followsonar"
             disable_flag = false
-            fqdn         = "resume.malavear.com"
+            fqdn         = "google.com"
           },
           {
-            value        = "108.157.142.25"
+            value        = "142.250.189.206"
             weight       = 20
             policy       = "followsonar"
             disable_flag = false
-            fqdn         = "resume.malavear.com"
+            fqdn         = "google.com"
           }
         ]
       }
@@ -96,18 +96,18 @@ locals {
       test_cname_pool1 = {
         values = [
           {
-            value        = "resume.malavear.com"
+            value        = "google.com"
             weight       = 20
             policy       = "followsonar"
             disable_flag = false
-            fqdn         = "resume.malavear.com"
+            fqdn         = "google.com"
           },
           {
             value        = "malavear.com"
             weight       = 20
             policy       = "followsonar"
             disable_flag = false
-            fqdn         = "resume.malavear.com"
+            fqdn         = "google.com"
           }
         ]
       }
@@ -116,18 +116,18 @@ locals {
       test_aaaa_pool1 = {
         values = [
           {
-            value        = "2600:9000:20e9:c000:19:5f0c:4440:93a1"
+            value        = "2607:f8b0:4005:810:0:0:0:200e"
             weight       = 20
             policy       = "followsonar"
             disable_flag = false
-            fqdn         = "resume.malavear.com"
+            fqdn         = "google.com"
           },
           {
-            value        = "2600:9000:20e9:8800:19:5f0c:4440:93a1"
+            value        = "2607:f8b0:4009:814::200e"
             weight       = 20
             policy       = "followsonar"
             disable_flag = false
-            fqdn         = "resume.malavear.com"
+            fqdn         = "google.com"
           }
         ]
       }
